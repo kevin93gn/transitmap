@@ -1,0 +1,1 @@
+Proyecto de pruebas para el componente de google maps para react, utilizando refs y load-google-maps-api para conseguir emplear las funciones del mismo de forma nativa pero adaptadas a su funcionamiento en ReactJS

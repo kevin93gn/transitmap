@@ -1,0 +1,20 @@
+.App {
+  display: flex;
+  flex-direction: row;
+  height: calc(100vh - 76px);
+  padding: 5%;
+}
+
+.location {
+  display: grid;
+  width: calc(100% + 20px);
+  margin-left: -10px;
+  margin-top: -10px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: calc(100vh - 180px);
+  padding: 40px 40px;
+}
+
+.map-location {
+  padding: 10px 20px;
+}
