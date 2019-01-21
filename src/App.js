@@ -46,9 +46,9 @@ class App extends Component {
     console.log(row);
     alert(row.name);
     if (row.id==1){
-      waypoints=way1;
+      this.setState(waypoints: way1);
     }else if(row.id==2){
-      waypoints=way2;
+      this.setState(waypoints: way2);
     }
   }
 

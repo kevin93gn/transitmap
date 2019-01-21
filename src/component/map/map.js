@@ -16,10 +16,7 @@ class Map extends Component {
             var directionsService = new googleMaps.DirectionsService;
             var directionsDisplay = new googleMaps.DirectionsRenderer;
             //Inicializacion del mapa
-            this.map = new googleMaps.Map( this.refs.map, {
-                center: this.props.initialPosition,
-                zoom: this.props.zoom
-            } );
+            
 
             //Dibujo de ruta
             var origin = new googleMaps.LatLng(this.props.waypoints[0]);
