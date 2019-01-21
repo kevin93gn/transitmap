@@ -6,6 +6,44 @@ import { searchMap } from './map-styles.js';
 
 class Map extends Component {
 
+    componentDidUpdate(newProps){
+        alert('didupdate');
+        console.log(newProps);
+    }
+    componentWillReceiveProps(newProps){
+        alert('willreceive');
+        loadGoogleMapsAPI( this.props.config ).then( googleMaps => {
+            var directionsService = new googleMaps.DirectionsService;
+            var directionsDisplay = new googleMaps.DirectionsRenderer;
+            //Inicializacion del mapa
+            this.map = new googleMaps.Map( this.refs.map, {
+                center: this.props.initialPosition,
+                zoom: this.props.zoom
+            } );
+
+            //Dibujo de ruta
+            var origin = new googleMaps.LatLng(this.props.waypoints[0]);
+            var destination = new googleMaps.LatLng(this.props.waypoints[this.props.waypoints.length -1]);
+
+            if (newProps.waypoints !== null && newProps.waypoints !== this.props.waypoints){
+                var waypoints = []
+                for(let index in newProps.waypoints){
+                    const item = newProps.waypoints[index]
+
+                    if(!(index < 1 || index == (newProps.waypoints.length - 1))){
+                        var resp = new googleMaps.LatLng(item)
+
+                        waypoints.push({
+                            location: resp,
+                            stopover: true
+                        })
+                    }
+                }
+            }
+        }).catch( err => {
+            console.error(err);
+        });
+    }
 
     componentDidMount(){
         loadGoogleMapsAPI( this.props.config ).then( googleMaps => {
